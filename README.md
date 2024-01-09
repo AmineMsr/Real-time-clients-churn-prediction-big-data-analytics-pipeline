@@ -84,6 +84,3 @@ spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,net.sno
 ```
 
 <div style="background-color:gray; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;text-align:center"> ✨ THE END ✨</div><br>
-
-<div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px;font-weight:bold;border-radius: 20px;border: 5px solid black;">
-<p style="color:cyan;font-weight:bold"><u>Réalisé par:</u></p>
