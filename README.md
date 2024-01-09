@@ -13,71 +13,68 @@ who worked on different aspects of the project.
 </h1>
 
 
-<div style="background-color:white; color:black; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-Nous avons developper un modèle de prédiction des churn de télécome en utilisant Pyspark le Notebook qui contient l'EDA et la construction de modèle (Random Forest) se situe dans le dossier <span style="color:orangered;">../SPARK_ML/ </span>
 </div><br>
-
+<h1 style='color:yellow' align='center'>
+    Spark Structured Streaming.
+</h1>
 <div style="background-color:white; color:black; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-Dans ce répértoir on va charger et utiliser ce modèle développer qui se situe dans <span style="color:purple;">Model/random_forest_model</span> pour construire les prédictions sur l'ensemble de données <span style="color:purple;">churn_dataset.csv</span> 
+We have developed a telecom churn prediction model using Pyspark. The notebook containing the EDA and model construction (Random Forest) is located in the folder <span style="color:orangered;">../SPARK_ML/ </span>
 </div><br>
-
 <div style="background-color:white; color:black; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-Ce processus commencera par l'importation des données ligne par ligne avec Kafka vers spark Streaming ou les transformation seront executé et loader le modèle pour construire les prédictions et stocker le output sur Cassandra pour les visualiser ensuite en temp réel avec PowerBi .Tous cela est en temp réel .<br>
-Le schema suivant montre ce processus:
+In this directory, we load and use the developed model located in <span style="color:purple;">Model/random_forest_model</span> to make predictions on the <span style="color:purple;">churn_dataset.csv</span> dataset.
 </div><br>
-
+<div style="background-color:white; color:black; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
+This process begins by importing data line by line with Kafka to Spark Streaming, where transformations are executed. The model is loaded to make predictions, and the output is stored in Cassandra. The results are then visualized in real-time with PowerBi. All of this is done in real-time. <br> The following schema illustrates this process:
+</div><br>
 <div style="text-align:center;height:70;">
     <img src="Pipeline.png" width=700 alt="image1">
 </div><br>
-
 <div style="background-color:white; color:black; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-Dans ce Répértoir vous allez trouver les éléments suivants:
+In this directory, you will find the following elements:
 <ul>
-    <li><span style="color:purple">WA_Fn-UseC_-Telco-Customer-Churn.csv :</span><span style="color:olive">Fichier des données avec lesquels on va travailler</span></li>
-    <li><span style="color:purple">Model :</span><span style="color:olive">Contient notre modèle Random Forest</span></li>
-    <li><span style="color:purple">churn.py :</span><span style="color:olive">Contient le code qui sert à envoyer les données du fichier csv vers kafka</span></li>
-    <li><span style="color:purple">Streaming.py :</span><span style="color:olive">Contient le code de connection de spark avec kafka ainsi que les transformations des données et la réalisation de prédiction en temps réel avec spark structured streaming et finalement l'importation des résultats à Snowflake </span></li>
-    <li><span style="color:purple">ChurnDashboard.pbix :</span><span style="color:olive">Contient le Dashborad des visulisations avec les donnés reçu de Snowflake avec la fonctionnalité de DirectQuery de Power BI</span></li>
-    <li><span style="color:purple">README.md :</span><span style="color:olive">Description des fichiers avec les commandes à exécuter</span></li>
+    <li><span style="color:purple">WA_Fn-UseC_-Telco-Customer-Churn.csv :</span><span style="color:olive">Data file we are working with</span></li>
+    <li><span style="color:purple">Model :</span><span style="color:olive">Contains our Random Forest model</span></li>
+    <li><span style="color:purple">churn.py :</span><span style="color:olive">Contains the code to send data from the csv file to Kafka</span></li>
+    <li><span style="color:purple">Streaming.py :</span><span style="color:olive">Contains the code to connect Spark with Kafka, perform data transformations, real-time prediction with Spark Structured Streaming, and import results to Snowflake</span></li>
+    <li><span style="color:purple">ChurnDashboard.pbix :</span><span style="color:olive">Contains the visualization dashboard with data received from Snowflake using Power BI's DirectQuery functionality</span></li>
+    <li><span style="color:purple">README.md :</span><span style="color:olive">Description of files with execution commands</span></li>
 </ul>
 </div><br>
-
 <div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-la première chose à faire est de lancer zookepper</div><br>
+The first thing to do is to launch Zookeeper</div><br>
 
 ```bash
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
 <div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-Ensuite on démarre le serveur de kafka </div><br>
+Then start the Kafka server</div><br>
 
 ```bash
 bin/kafka-server-start.sh config/server.properties
 ```
 
 <div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-Ensuite on crée un topic pour notre projet qu'on va appeller churn</div><br>
-
+Next, create a topic for our project called "churn"</div><br>
 ```bash
 bin/kafka-topics.sh --create --topic churn --bootstrap-server localhost:9092
 ```
 
 <div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">
-on peut s'assurer que le topic est crée en essayant la commande suivante</div><br>
+Ensure that the topic is created by trying the following command</div><br>
 
 ```bash
 bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 ```
 
-<div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">Ensuite on va changer de repertoire vers le dossier du projet, puis on va executer le fichier python qui sert à envoyer les données du fichier csv ligne par ligne au topic "churn" de kafka jouant ainsi le rôle d'un producer</div><br>
+<div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">Then change the directory to the project folder, and execute the Python file to send data from the csv file line by line to the "churn" topic in Kafka, acting as a producer</div><br>
 
 ```bash
 cd churn-project
 python3 churn.py
 ```
 
-<div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">Finalement on va exécuter notre application pyspark qui prend ces données là de kafka comme étant un consommateur, puis effectue les transformations necessaires et réaliser les prédictions en temps réel et finalement envoyer les résultats à snowflake</div><br>
+<div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px; border: 5px solid black;font-weight:bold;border-radius: 20px;">Finally, execute our Pyspark application, which takes this data from Kafka as a consumer, performs the necessary transformations, makes real-time predictions, and finally sends the results to Snowflake</div><br>
 
 ```bash
 spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,net.snowflake:spark-snowflake_2.12:2.10.0-spark_3.2 Streaming.py
