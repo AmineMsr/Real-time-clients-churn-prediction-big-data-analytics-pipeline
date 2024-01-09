@@ -1,4 +1,11 @@
-    
+
+## Acknowledgments
+
+I appreciate the contributions of the team members:
+- [Soufiane Elghazi](https://github.com/SoufianeElghazi)
+- [Yassine Ouahib](https://github.com/yassineouahib)
+
+who worked on different aspects of the project.
 </div><br>
 
 <h1 style='color:yellow' align='center'>
@@ -80,9 +87,3 @@ spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,net.sno
 
 <div style="background-color:olive; color:white; font-size:15px; font-family:Comic Sans MS; padding:10px;font-weight:bold;border-radius: 20px;border: 5px solid black;">
 <p style="color:cyan;font-weight:bold"><u>Réalisé par:</u></p>
-
-
-<ul >
-    <li href="https://github.com/SoufianeElghazi">ELGHAZI Soufiane</li>
-    <li href="https://github.com/yassineouahib">OUAHIB Yassine</li>
-</ul>
