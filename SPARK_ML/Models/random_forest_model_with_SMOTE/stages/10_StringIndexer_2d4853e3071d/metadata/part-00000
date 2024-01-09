@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1703427775400,"sparkVersion":"3.5.0","uid":"StringIndexer_2d4853e3071d","paramMap":{"outputCol":"StreamingTV_index","inputCol":"StreamingTV"},"defaultParamMap":{"outputCol":"StringIndexer_2d4853e3071d__output","stringOrderType":"frequencyDesc","handleInvalid":"error"}}
