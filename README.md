@@ -8,11 +8,6 @@ I appreciate the contributions of the team members:
 who worked on different aspects of the project.
 </div><br>
 
-<h1 style='color:yellow' align='center'>
-    Spark Structred Streaming.
-</h1>
-
-
 </div><br>
 <h1 style='color:yellow' align='center'>
     Spark Structured Streaming.
