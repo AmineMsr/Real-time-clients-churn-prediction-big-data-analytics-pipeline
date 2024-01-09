@@ -10,7 +10,7 @@ from pyspark.ml.classification import RandomForestClassificationModel
 '''
 snowflake_options = {
     "sfUrl" : "yz51096.eu-west-3.aws.snowflakecomputing.com",
-    "sfUser" : "BigData#ESI75",
+    "sfUser" : "username",
     "sfPassword" : "password", 
     "sfDatabase" : "CHURN",
     "sfSchema" : "CHURN",
